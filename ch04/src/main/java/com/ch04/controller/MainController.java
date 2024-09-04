@@ -11,9 +11,9 @@ public class MainController {
     // 요청 메서드 정의
     // 주소 매핑
     @RequestMapping(value="/hello", method = RequestMethod.GET)
-    public void hello(){
+    public String hello(){
         System.out.println("hello...");
-
+        return "hello";  //
     }
 
     //위와 동일
