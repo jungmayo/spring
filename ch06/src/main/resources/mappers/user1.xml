@@ -1,0 +1,36 @@
+<!--ㅡmybatis but what 검색 후 밑에 있는 코드-->
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ch06.dao.User1Mapper">
+
+    <insert id="insertUser1">
+        insert into user1 values (#{uid},#{name},#{birth},#{hp},#{age});
+    </insert>
+
+    <!-- return이 있어서 resultType있어야함 , dto를 리턴-->
+    <select id="selectUser1" resultType="com.ch06.dto.User1DTO">
+        select * from `user1` where uid = #{uid};
+    </select>
+
+    <!-- return이 있어서 resultType있어야함 , 알아서 List로 dto를 리턴-->
+    <select id="selectUser1s" resultType="com.ch06.dto.User1DTO">
+        select * from `user1`;
+
+    </select>
+    <update id="updateUser1">
+        update `user1` set
+            `name` = #{name},
+            `birth` = #{birth},
+            `hp` = #{hp},
+            `age` = #{age}
+        where
+            `uid` = #{uid};
+    </update>
+    <delete id="deleteUser1">
+        delete from `user1` where `uid` = #{uid};
+    </delete>
+
+
+</mapper>
