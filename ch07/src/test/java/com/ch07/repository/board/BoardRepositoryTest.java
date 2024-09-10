@@ -2,10 +2,14 @@ package com.ch07.repository.board;
 
 import com.ch07.entity.board.Article;
 import com.ch07.entity.board.Comment;
+import com.ch07.entity.board.File;
 import com.ch07.entity.board.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @SpringBootTest
 public class BoardRepositoryTest {
@@ -71,4 +75,35 @@ public class BoardRepositoryTest {
         commentRepository.save(comment);
 
     }
+
+    // 테스트 4 - 파일 등록
+    @Test
+    void insertFileTest(){
+        Article article = Article.builder()
+                .no(1)
+                .build();
+
+        File file = File.builder()
+                .oName("테스트")
+                .sName("xptmxm")
+                .article(article)
+                .build();
+        fileRepository.save(file);
+    }
+
+    // 테스트 5 - 글 조회 // 연관설정된 엔티티를 조회할 때 트랜잭션을 사용해주어야 함
+    @Transactional
+    @Test
+    void selectArticlesTest(){
+        List<Article> articles = articleRepository.findAll();
+        //System.out.println(articles);
+        for(Article article : articles){
+            List<Comment> comments = article.getComment();
+            List<File> files = article.getFile();
+
+            System.out.println(files);
+            System.out.println(comments);
+        }
+    }
+
 }
