@@ -94,7 +94,7 @@ public class User1Service {
         // Entity 삭제(데이터베이스 Delete)
 
         if (!user1Repository.existsById(uid)) {
-            throw new EntityNotFoundException("user not found");
+            throw new EntityNotFoundException("user not found"); //요청한 곳으로 예외 던지기
         }
             user1Repository.deleteById(uid);
         }
