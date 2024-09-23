@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -17,6 +18,7 @@ public class User1Controller {
     private final User1Service user1Service;
 
     @GetMapping("/user1/list")
+    @ResponseBody
     public String list(Model model) {
 
         List<User1DTO> users = user1Service.selectUser1s();

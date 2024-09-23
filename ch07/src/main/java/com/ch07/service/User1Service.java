@@ -60,6 +60,9 @@ public class User1Service {
         */
 
         // List stream(내부 반복자)를 이용한 Entity 리스트를 DTO 리스트로 변환
+        //stream : 각 요소를 하나한 처리하기 위해서
+        //map : 스트림의 각 요소를 DTO로 변환
+        //collect : DTO를 다시 리스트로 변환
         List<User1DTO> users = user1s
                 .stream()
                 .map(entity -> entity.toDTO())

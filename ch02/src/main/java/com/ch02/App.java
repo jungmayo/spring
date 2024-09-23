@@ -32,6 +32,7 @@ import javax.naming.Name;
  * -컨테이너의 빈을 주입
  * -이름 또는 클래스 타입으로 매칭된 빈을 주입
  *
+ * @conponent : 자동으로 빈 생성
  */
 public class App 
 {

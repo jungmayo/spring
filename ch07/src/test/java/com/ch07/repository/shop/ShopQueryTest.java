@@ -34,10 +34,6 @@ public class ShopQueryTest {
          -Custom 인터페이스를 구현하는 IMPL 클래스 생성
          -Impl 클래스에서 QueryDSL 쿼리메서드 정의
          -개별 repository에 Custom 인터페이스 상속 추가
-         
-
-
-
 
      */
 
