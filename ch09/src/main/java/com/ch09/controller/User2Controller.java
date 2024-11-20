@@ -53,7 +53,6 @@ public class User2Controller {
                 .body(modifiedUser2);
     }
 
-    @ResponseBody
     @DeleteMapping("/user2/{uid}")
     public ResponseEntity delete(@PathVariable("uid") String uid){
 

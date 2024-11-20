@@ -55,9 +55,8 @@ public class User2Service {
         return null;
     }
     public void deleteUser2(String uid){
-        if(user2Repository.existsById(uid)){
+        if(!user2Repository.existsById(uid)){
             throw new EntityNotFoundException("user not found");
-
         }
         user2Repository.deleteById(uid);
     }
