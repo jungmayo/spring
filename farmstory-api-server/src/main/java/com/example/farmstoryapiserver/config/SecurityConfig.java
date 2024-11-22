@@ -5,6 +5,7 @@ import com.example.farmstoryapiserver.jwt.JwtProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -39,11 +40,13 @@ public class SecurityConfig {
                 .addFilterBefore(new JwtAuthenticationFilter(jwtProvider), UsernamePasswordAuthenticationFilter.class)
                 .authorizeHttpRequests(authorize ->
                         authorize.requestMatchers("/admin/**").hasRole("ADMIN")
-                                .requestMatchers("/article/**").hasAnyRole("ADMIN","USER")
+                                .requestMatchers(HttpMethod.POST,"/article/**").hasAnyRole("ADMIN","USER")
+                                .requestMatchers(HttpMethod.GET,"/article/**").permitAll()
+                                .requestMatchers(HttpMethod.POST,"/product/**").hasRole("ADMIN")
+                                .requestMatchers(HttpMethod.GET,"/product/**").permitAll()
+
                                 .anyRequest().permitAll()
-
                 );
-
         return http.build();
     }
 

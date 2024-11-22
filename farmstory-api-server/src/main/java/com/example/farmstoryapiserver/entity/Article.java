@@ -19,6 +19,7 @@ public class Article {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int no;
+
     private String cate;
 
     @Builder.Default
